@@ -1,0 +1,134 @@
+/* login-wilderness.css */
+
+:root {
+    --forest-green: #228B22;
+    --earth-brown: #8B4513;
+    --sky-blue: #87CEEB;
+    --sun-yellow: #FFD700;
+    --stone-gray: #696969;
+    --bg-light: #F5F5DC; /* Beige */
+    --text-dark: #36454F; /* Charcoal */
+    --font-heading: 'Architects Daughter', cursive;
+    --font-body: 'Merriweather', serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--forest-green);
+    background-image: url('https://www.transparenttextures.com/patterns/leaves.png');
+    color: var(--text-dark);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.splash-text {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--sun-yellow);
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+.login-card {
+    background-color: var(--bg-light);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    color: var(--text-dark);
+    border: 4px solid var(--earth-brown);
+}
+
+.login-card h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--earth-brown);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid var(--earth-brown);
+    border-radius: 20px;
+    font-size: 1rem;
+    background: #fff;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+    outline: none;
+    border-color: var(--forest-green);
+    box-shadow: 0 0 10px rgba(34, 139, 34, 0.3);
+}
+
+.login-card button {
+    background-color: var(--forest-green);
+    color: var(--bg-light);
+    border: 2px solid var(--earth-brown);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(34, 139, 34, 0.3);
+}
+
+.login-card button:hover {
+    background-color: #2e8b57;
+    color: var(--bg-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(34, 139, 34, 0.4);
+}
+
+.message-box {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-align: center;
+    color: var(--text-dark);
+    border: 1px solid;
+}
+
+.message-box.success {
+    background-color: #2ecc40;
+    border-color: #2ecc40;
+}
+
+.message-box.error {
+    background-color: #ff4136;
+    border-color: #ff4136;
+}
+
+@media (max-width: 600px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    .splash-text {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,134 @@
+/* login-medieval.css */
+
+:root {
+    --stone-dark: #4a4a4a;
+    --stone-light: #a9a9a9;
+    --wood-dark: #5C4033;
+    --parchment: #f1e4c9;
+    --royal-red: #800000;
+    --royal-gold: #D4AF37;
+    --text-light: #ffffff;
+    --text-dark: #2C1E12;
+    --font-heading: 'MedievalSharp', cursive;
+    --font-body: 'Slabo 27px', serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--stone-dark);
+    background-image: url('https://www.transparenttextures.com/patterns/concrete-wall.png');
+    color: var(--text-light);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.splash-text {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--royal-gold);
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+
+.login-card {
+    background-color: var(--parchment);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    color: var(--text-dark);
+    border: 4px solid var(--wood-dark);
+}
+
+.login-card h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--royal-red);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 2px solid var(--wood-dark);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #fff;
+    color: var(--text-dark);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+    outline: none;
+    border-color: var(--royal-red);
+    box-shadow: 0 0 10px rgba(128, 0, 0, 0.3);
+}
+
+.login-card button {
+    background-color: var(--royal-gold);
+    color: var(--text-dark);
+    border: 2px solid var(--wood-dark);
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.login-card button:hover {
+    background-color: #b89b2e;
+    color: var(--text-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
+}
+
+.message-box {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.message-box.success {
+    background-color: #2ecc40;
+    border: 1px solid #1f8423;
+}
+
+.message-box.error {
+    background-color: var(--royal-red);
+    border: 1px solid #cc332b;
+}
+
+@media (max-width: 600px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    .splash-text {
+        font-size: 2rem;
+    }
+}

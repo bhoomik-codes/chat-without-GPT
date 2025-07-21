@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat without GPT</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- COMMON STRUCTURAL STYLES -->
+    <link rel="stylesheet" href="styles/styles.css" />
+
+    <!-- THEME STYLESHEET -->
+    <!-- The href of this link should be changed by JavaScript to load different themes -->
+    <link id="theme-stylesheet" rel="stylesheet" href="styles/classic.css" />
+
+    <!-- Socket.IO Client CDN -->
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1 class="header-title">Chat without GPT</h1>
+            <!-- Added span for logged-in username display -->
+            <span id="loggedInUsernameDisplay" class="logged-in-username"></span>
+            <div class="header-controls">
+                <!-- Notification Bell Icon -->
+                <div class="notification-container">
+                    <button id="notificationBell" class="icon-button notification-bell">
+                        <i class="fa-solid fa-bell"></i>
+                        <span id="notificationCount" class="notification-count hidden">0</span>
+                    </button>
+                </div>
+
+                <div class="theme-switcher">
+                    <label for="theme-select">Theme:</label>
+                    <select id="theme-select">
+                        <option value="styles/classic.css">Classic</option>
+                        <option value="styles/pirate.css">Pirate</option>
+                        <option value="styles/medieval.css">Medieval</option>
+                        <option value="styles/games.css">Game</option>
+                        <option value="styles/fantasy.css">Fantasy</option>
+                        <option value="styles/wilderness.css">Wilderness</option>
+                        <option value="styles/tech.css">Tech</option>
+                    </select>
+                </div>
+                <button id="logoutButton" class="logout-button">
+                    <i class="fa-solid fa-person-walking-arrow-right"></i> Logout
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Sidebar for user list -->
+            <aside class="sidebar">
+                <h2 class="sidebar-title">Users</h2>
+                <div class="user-search-container">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="userSearch" placeholder="Search users..." />
+                </div>
+                <div class="user-list-container">
+                    <ul id="userList">
+                        <!-- User list will be populated dynamically by your backend -->
+                    </ul>
+                </div>
+                <!-- Group Creation Button -->
+                <button id="createGroupBtn" class="create-group-button">
+                    <i class="fa-solid fa-users"></i> Create Group
+                </button>
+                <div class="user-details-container">
+                    <span class="current-user-name"></span>
+                </div>
+            </aside>
+
+            <!-- Main chat interface -->
+            <section class="interface" id="chatInterface">
+                <div class="chat-header">
+                    <!-- This header will be updated by JavaScript to show the current chat partner/group -->
+                    <h3 id="chat-with-header">Select a user to start chatting</h3>
+                </div>
+                <div class="chatbox" id="chatBox">
+                    <!-- Messages will be loaded here dynamically -->
+                </div>
+                <div class="message-input-container">
+                    <input id="m" autocomplete="off" placeholder="What's your message?..." />
+                    <button class="icon-button" id="sendFile" title="Send a File">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                    <button class="icon-button" id="emoji" title="Send Emoji">
+                        <i class="fa-solid fa-face-grin-beam"></i>
+                    </button>
+                    <!-- New button to start canvas session -->
+                    <button class="icon-button" id="startCanvasBtn" title="Start Collaborative Drawing">
+                        <i class="fa-solid fa-paint-brush"></i>
+                    </button>
+                    <button class="send-button" id="send" title="Send Message">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Notification Panel -->
+    <div id="notificationPanel" class="notification-panel hidden">
+        <div class="notification-panel-header">
+            <h3>Notifications</h3>
+            <button id="closeNotificationPanel" class="close-panel-button">&times;</button>
+        </div>
+        <ul id="notificationsList" class="notifications-list">
+            <!-- Notifications will be loaded here -->
+        </ul>
+        <button id="markAllReadBtn" class="mark-all-read-button hidden">Mark All As Read</button>
+    </div>
+
+    <!-- Group Creation Modal -->
+    <div id="groupCreationModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h2 class="modal-title">Create New Group</h2>
+            <input type="text" id="groupNameInput" placeholder="Enter group name" required>
+            <div class="group-members-selection">
+                <h4>Select Members:</h4>
+                <ul id="groupMembersChecklist" class="group-members-checklist">
+                    <!-- Users will be loaded here dynamically as checkboxes -->
+                </ul>
+            </div>
+            <div class="modal-actions">
+                <button id="createGroupConfirmBtn" class="btn-primary">Create Group</button>
+                <button id="cancelGroupCreationBtn" class="btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Your App's Script -->
+    <script src="index.js"></script>
+    <!-- Add JS here to handle theme switching -->
+    <script>
+        const themeSelect = document.getElementById('theme-select');
+        const themeStylesheet = document.getElementById('theme-stylesheet');
+
+        themeSelect.addEventListener('change', () => {
+            themeStylesheet.href = themeSelect.value;
+        });
+    </script>
+</body>
+
+</html>

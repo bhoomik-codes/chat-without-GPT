@@ -1,0 +1,133 @@
+/* login-fantasy.css */
+
+:root {
+    --deep-purple: #2c003e;
+    --mystic-purple: #5b2c6f;
+    --silver: #c0c0c0;
+    --gold: #ffd700;
+    --parchment: #fdf5e6;
+    --text-light: #f0e6ff;
+    --text-dark: #1a001a;
+    --font-heading: 'Cinzel Decorative', cursive;
+    --font-body: 'Lora', serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--deep-purple);
+    background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+    color: var(--text-light);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.splash-text {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 25px;
+    text-align: center;
+    text-shadow: 2px 2px 4px var(--mystic-purple);
+}
+
+.login-card {
+    background-color: var(--parchment);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    width: 100%;
+    color: var(--text-dark);
+    border: 2px solid var(--silver);
+}
+
+.login-card h2 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--mystic-purple);
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--silver);
+    border-radius: 20px;
+    font-size: 1rem;
+    background: var(--mystic-purple);
+    color: var(--text-light);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card input[type="text"]:focus,
+.login-card input[type="password"]:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+}
+
+.login-card button {
+    background-color: var(--gold);
+    color: var(--text-dark);
+    border: 1px solid var(--gold);
+    padding: 12px 25px;
+    border-radius: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+}
+
+.login-card button:hover {
+    background-color: #e6c200;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+}
+
+.message-box {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-align: center;
+    color: var(--text-light);
+    border: 1px solid;
+}
+
+.message-box.success {
+    background-color: #2ecc40;
+    border-color: #2ecc40;
+}
+
+.message-box.error {
+    background-color: #ff4136;
+    border-color: #ff4136;
+}
+
+@media (max-width: 600px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+    .splash-text {
+        font-size: 1.7rem;
+    }
+}
